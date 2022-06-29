@@ -55,6 +55,23 @@ images.forEach((element, index) => {
     imgContainer.append(div);
 });
 
+const thumbnail = document.getElementById('thumbnail');
+
+images.forEach((element, index) => {
+    const div = document.createElement('div');
+    div.classList.add('col', 'p-0');
+
+    const img = document.createElement('img');
+    img.src = element.url;
+
+    if (index != 0) {
+        div.classList.add('opacity-50');
+    }
+
+    div.append(img);
+    thumbnail.append(div);
+});
+
 let i = 0;
 
 prev.addEventListener('click', function () {
@@ -71,9 +88,15 @@ function forwards(index) {
         index = 0;
         imgContainer.children[images.length - 1].classList.add('d-none');
         imgContainer.children[index].classList.remove('d-none');
+
+        thumbnail.children[images.length - 1].classList.add('opacity-50');
+        thumbnail.children[index].classList.remove('opacity-50');
     } else {
         imgContainer.children[index - 1].classList.add('d-none');
         imgContainer.children[index].classList.remove('d-none');
+
+        thumbnail.children[index - 1].classList.add('opacity-50');
+        thumbnail.children[index].classList.remove('opacity-50');
     }
     return index;
 }
@@ -84,9 +107,15 @@ function backwards(index) {
         index = images.length - 1;
         imgContainer.children[0].classList.add('d-none');
         imgContainer.children[index].classList.remove('d-none');
+
+        thumbnail.children[0].classList.add('opacity-50');
+        thumbnail.children[index].classList.remove('opacity-50');
     } else {
         imgContainer.children[index + 1].classList.add('d-none');
         imgContainer.children[index].classList.remove('d-none');
+
+        thumbnail.children[index + 1].classList.add('opacity-50');
+        thumbnail.children[index].classList.remove('opacity-50');
     }
     return index;
 }

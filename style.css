@@ -27,3 +27,7 @@ img {
     font-size: 1rem;
     text-align: right;
 }
+
+.ms-thumbnail{
+    padding: 0 12px;
+}
