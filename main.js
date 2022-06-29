@@ -57,9 +57,15 @@ images.forEach((element, index) => {
 
 const thumbnail = document.getElementById('thumbnail');
 
+let i = 0;
+
 images.forEach((element, index) => {
     const div = document.createElement('div');
     div.classList.add('col', 'p-0');
+
+    div.addEventListener('click', function () {
+        i = jumpIndex(i, index);
+    });
 
     const img = document.createElement('img');
     img.src = element.url;
@@ -71,8 +77,6 @@ images.forEach((element, index) => {
     div.append(img);
     thumbnail.append(div);
 });
-
-let i = 0;
 
 prev.addEventListener('click', function () {
     i = backwards(i);
@@ -118,4 +122,13 @@ function backwards(index) {
         thumbnail.children[index].classList.remove('opacity-50');
     }
     return index;
+}
+
+function jumpIndex(oldIndex, newIndex) {
+    imgContainer.children[oldIndex].classList.add('d-none');
+    imgContainer.children[newIndex].classList.remove('d-none');
+
+    thumbnail.children[oldIndex].classList.add('opacity-50');
+    thumbnail.children[newIndex].classList.remove('opacity-50');
+    return newIndex;
 }
