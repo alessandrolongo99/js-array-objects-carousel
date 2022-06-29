@@ -86,6 +86,10 @@ next.addEventListener('click', function () {
     i = forwards(i);
 });
 
+const clock = setInterval(() => {
+    i = forwards(i);
+}, 2000);
+
 function forwards(index) {
     index++;
     if (index >= images.length) {
