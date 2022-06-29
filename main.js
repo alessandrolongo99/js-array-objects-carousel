@@ -25,3 +25,48 @@ const images = [
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
     },
 ];
+
+const imgContainer = document.getElementById('img-container');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+
+images.forEach((element, index) => {
+    const div = document.createElement('div');
+    div.classList.add('div-container');
+    
+    const img = document.createElement('img');
+    img.src = element.url;
+    
+    if (index != 0) {
+        div.classList.add('d-none');
+    }
+
+    div.append(img);
+    imgContainer.append(div);
+});
+
+let i = 0;
+
+prev.addEventListener('click', function () {
+    i--;
+    if (i <= -1) {
+        i = images.length - 1;
+        imgContainer.children[0].classList.add('d-none');
+        imgContainer.children[i].classList.remove('d-none');
+    } else {
+        imgContainer.children[i + 1].classList.add('d-none');
+        imgContainer.children[i].classList.remove('d-none');
+    }
+});
+
+next.addEventListener('click', function(){
+    i++;
+    if(i >= images.length){
+        i = 0;
+        imgContainer.children[images.length - 1].classList.add('d-none');
+        imgContainer.children[i].classList.remove('d-none');
+    }else{
+        imgContainer.children[i - 1].classList.add('d-none');
+        imgContainer.children[i].classList.remove('d-none');
+    }
+});
