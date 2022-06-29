@@ -86,8 +86,32 @@ next.addEventListener('click', function () {
     i = forwards(i);
 });
 
+let invertValue = false;
+let isRunning = true;
+const invert = document.getElementById('invert');
+const start = document.getElementById('start');
+const stop = document.getElementById('stop');
+
+invert.addEventListener('click', function () {
+    invertValue = !invertValue;
+});
+
+stop.addEventListener('click', function () {
+    isRunning = false;
+});
+
+start.addEventListener('click', function () {
+    isRunning = true;
+});
+
 const clock = setInterval(() => {
-    i = forwards(i);
+    if (isRunning) {
+        if (!invertValue) {
+            i = forwards(i);
+        } else {
+            i = backwards(i);
+        }
+    }
 }, 2000);
 
 function forwards(index) {
