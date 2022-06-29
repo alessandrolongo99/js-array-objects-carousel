@@ -1,14 +1,29 @@
-#img-container{
+#img-container {
     height: 600px;
 }
 
-.div-container{
+.div-container {
     height: 100%;
     width: 100%;
 }
 
-img{
+img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.ms-title {
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.ms-text {
+    top: 4rem;
+    right: 1rem;
+    color: white;
+    font-size: 1rem;
+    text-align: right;
 }
