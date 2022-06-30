@@ -65,6 +65,7 @@ images.forEach((element, index) => {
 
     div.addEventListener('click', function () {
         i = jumpIndex(i, index);
+        isRunning = false;
     });
 
     const img = document.createElement('img');
